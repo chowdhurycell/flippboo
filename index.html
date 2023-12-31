@@ -41,7 +41,9 @@
                 }
 
                 images.forEach((image) => {
-                    $("#flipbook").turn("addPage", `<img src="${image}" alt="">`);
+                    // Correct the path to the images
+                    const imagePath = `./${image}`;
+                    $("#flipbook").turn("addPage", `<img src="${imagePath}" alt="">`);
                 });
             });
         </script>
