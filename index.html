@@ -9,16 +9,66 @@
             background-color: #E37383; /* Light Pink */
             margin: 0;
             padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
         }
 
-        #flipbook {
-            border: 10px solid #770737; /* Darker Pink */
-            background-color: #E0BFB8; /* Light Beige */
+        #flipbook-container {
+            perspective: 1000px;
+            transform-style: preserve-3d;
+            width: 50%; /* Adjust as needed */
+            height: 70%; /* Adjust as needed */
+        }
+
+        .page {
+            position: absolute;
             width: 100%;
             height: 100%;
+            backface-visibility: hidden;
+            transform-origin: 0% 50%;
+        }
+
+        .page img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
     </style>
 </head>
+<body>
+    <div id="flipbook-container">
+        <!-- Pages -->
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/turn.js@4.1.0"></script>
+        <script>
+            $(function() {
+                const flipbookContainer = $("#flipbook-container");
+
+                // Add your image URLs here
+                const images = [];
+                for (let i = 1; i <= 164; i++) {
+                    const formattedNumber = String(i).padStart(3, '0');
+                    const imageUrl = `flippboo/ezgif-frame-${formattedNumber}.jpg`; // Updated path
+                    images.push(imageUrl);
+                }
+
+                images.forEach((image, index) => {
+                    const page = $("<div class='page'></div>").css({
+                        transform: `rotateY(${index * (360 / images.length)}deg) translateZ(${flipbookContainer.width() / 2}px)`,
+                    });
+                    const img = $("<img src='" + image + "' alt=''>");
+                    page.append(img);
+                    flipbookContainer.append(page);
+                });
+            });
+        </script>
+    </div>
+</body>
+</html>
+
 <body>
     <div id="flipbook">
         <!-- Pages -->
