@@ -68,35 +68,3 @@
     </div>
 </body>
 </html>
-
-<body>
-    <div id="flipbook">
-        <!-- Pages -->
-        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/turn.js@4.1.0"></script>
-        <script>
-            $(function() {
-                $("#flipbook").turn({
-                    width: '100%',
-                    height: '100%',
-                    autoCenter: true
-                });
-
-                // Add your image URLs here
-                const images = [];
-                for (let i = 1; i <= 164; i++) {
-                    const formattedNumber = String(i).padStart(3, '0');
-                    const imageUrl = `ezgif-frame-${formattedNumber}.jpg`;
-                    images.push(imageUrl);
-                }
-
-                images.forEach((image) => {
-                    // Correct the path to the images
-                    const imagePath = `./${image}`;
-                    $("#flipbook").turn("addPage", `<img src="${imagePath}" alt="">`);
-                });
-            });
-        </script>
-    </div>
-</body>
-</html>
