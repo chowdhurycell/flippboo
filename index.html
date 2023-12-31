@@ -1,236 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Flip Book Title</title>
     <style>
         body {
-            background-color: #FAA0A0; /* Darker shade of pink */
+            background-color: #E37383; /* Light Pink */
             margin: 0;
             padding: 0;
         }
 
         #flipbook {
-            border: 10px solid #F3CFC6; /* Pink border */
-            background-color: #F8C8DC; /* White background inside the border */
+            border: 10px solid #770737; /* Darker Pink */
+            background-color: #E0BFB8; /* Light Beige */
             width: 100%;
             height: 100%;
         }
-
-        #startButton {
-            background-color: #FAA0A0; /* Pink button color */
-            color: #E0BFB8; /* White button text color */
-            padding: 15px 30px;
-            font-size: 16px;
-            cursor: pointer;
-        }
     </style>
 </head>
-
 <body>
     <div id="flipbook">
-        <!-- Cover Page -->
-        <div style="background-color: #E37383; text-align: center; padding: 50px;">
-            <h1 style="color: #770737;"> SHER AND SHERNI LORE </h1>
-        </div>
-    </div>
+        <!-- Pages -->
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/turn.js@4.1.0"></script>
+        <script>
+            $(function() {
+                $("#flipbook").turn({
+                    width: '100%',
+                    height: '100%',
+                    autoCenter: true
+                });
 
-    <!-- Start Button -->
-    <div style="text-align: center; margin-top: 20px;">
-        <button id="startButton" onclick="startFlipBook()">Start Flip Book</button>
-    </div>
+                // Add your image URLs here
+                const images = [];
+                for (let i = 1; i <= 164; i++) {
+                    const formattedNumber = String(i).padStart(3, '0');
+                    const imageUrl = `ezgif-frame-${formattedNumber}.jpg`;
+                    images.push(imageUrl);
+                }
 
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/turn.js@4.1.0"></script>
-    <script>
-        $(function () {
-            $("#flipbook").turn({
-                width: '100%',
-                height: '100%',
-                autoCenter: true
+                images.forEach((image) => {
+                    $("#flipbook").turn("addPage", `<img src="${image}" alt="">`);
+                });
             });
-
-            // Add your image URLs here
-            const images = [
-                'ezgif-frame-001.jpg',
-'ezgif-frame-002.jpg',
-'ezgif-frame-003.jpg',
-'ezgif-frame-004.jpg',
-'ezgif-frame-005.jpg',
-'ezgif-frame-006.jpg',
-'ezgif-frame-007.jpg',
-'ezgif-frame-008.jpg',
-'ezgif-frame-009.jpg',
-'ezgif-frame-010.jpg',
-'ezgif-frame-011.jpg',
-'ezgif-frame-012.jpg',
-'ezgif-frame-013.jpg',
-'ezgif-frame-014.jpg',
-'ezgif-frame-015.jpg',
-'ezgif-frame-016.jpg',
-'ezgif-frame-017.jpg',
-'ezgif-frame-018.jpg',
-'ezgif-frame-019.jpg',
-'ezgif-frame-020.jpg',
-'ezgif-frame-021.jpg',
-'ezgif-frame-022.jpg',
-'ezgif-frame-023.jpg',
-'ezgif-frame-024.jpg',
-'ezgif-frame-025.jpg',
-'ezgif-frame-026.jpg',
-'ezgif-frame-027.jpg',
-'ezgif-frame-028.jpg',
-'ezgif-frame-029.jpg',
-'ezgif-frame-030.jpg',
-'ezgif-frame-031.jpg',
-'ezgif-frame-032.jpg',
-'ezgif-frame-033.jpg',
-'ezgif-frame-034.jpg',
-'ezgif-frame-035.jpg',
-'ezgif-frame-036.jpg',
-'ezgif-frame-037.jpg',
-'ezgif-frame-038.jpg',
-'ezgif-frame-039.jpg',
-'ezgif-frame-040.jpg',
-'ezgif-frame-041.jpg',
-'ezgif-frame-042.jpg',
-'ezgif-frame-043.jpg',
-'ezgif-frame-044.jpg',
-'ezgif-frame-045.jpg',
-'ezgif-frame-046.jpg',
-'ezgif-frame-047.jpg',
-'ezgif-frame-048.jpg',
-'ezgif-frame-049.jpg',
-'ezgif-frame-050.jpg',
-'ezgif-frame-051.jpg',
-'ezgif-frame-052.jpg',
-'ezgif-frame-053.jpg',
-'ezgif-frame-054.jpg',
-'ezgif-frame-055.jpg',
-'ezgif-frame-056.jpg',
-'ezgif-frame-057.jpg',
-'ezgif-frame-058.jpg',
-'ezgif-frame-059.jpg',
-'ezgif-frame-060.jpg',
-'ezgif-frame-061.jpg',
-'ezgif-frame-062.jpg',
-'ezgif-frame-063.jpg',
-'ezgif-frame-064.jpg',
-'ezgif-frame-065.jpg',
-'ezgif-frame-066.jpg',
-'ezgif-frame-067.jpg',
-'ezgif-frame-068.jpg',
-'ezgif-frame-069.jpg',
-'ezgif-frame-070.jpg',
-'ezgif-frame-071.jpg',
-'ezgif-frame-072.jpg',
-'ezgif-frame-073.jpg',
-'ezgif-frame-074.jpg',
-'ezgif-frame-075.jpg',
-'ezgif-frame-076.jpg',
-'ezgif-frame-077.jpg',
-'ezgif-frame-078.jpg',
-'ezgif-frame-079.jpg',
-'ezgif-frame-080.jpg',
-'ezgif-frame-081.jpg',
-'ezgif-frame-082.jpg',
-'ezgif-frame-083.jpg',
-'ezgif-frame-084.jpg',
-'ezgif-frame-085.jpg',
-'ezgif-frame-086.jpg',
-'ezgif-frame-087.jpg',
-'ezgif-frame-088.jpg',
-'ezgif-frame-089.jpg',
-'ezgif-frame-090.jpg',
-'ezgif-frame-091.jpg',
-'ezgif-frame-092.jpg',
-'ezgif-frame-093.jpg',
-'ezgif-frame-094.jpg',
-'ezgif-frame-095.jpg',
-'ezgif-frame-096.jpg',
-'ezgif-frame-097.jpg',
-'ezgif-frame-098.jpg',
-'ezgif-frame-099.jpg',
-'ezgif-frame-100.jpg',
-'ezgif-frame-101.jpg',
-'ezgif-frame-102.jpg',
-'ezgif-frame-103.jpg',
-'ezgif-frame-104.jpg',
-'ezgif-frame-105.jpg',
-'ezgif-frame-106.jpg',
-'ezgif-frame-107.jpg',
-'ezgif-frame-108.jpg',
-'ezgif-frame-109.jpg',
-'ezgif-frame-110.jpg',
-'ezgif-frame-111.jpg',
-'ezgif-frame-112.jpg',
-'ezgif-frame-113.jpg',
-'ezgif-frame-114.jpg',
-'ezgif-frame-115.jpg',
-'ezgif-frame-116.jpg',
-'ezgif-frame-117.jpg',
-'ezgif-frame-118.jpg',
-'ezgif-frame-119.jpg',
-'ezgif-frame-120.jpg',
-'ezgif-frame-121.jpg',
-'ezgif-frame-122.jpg',
-'ezgif-frame-123.jpg',
-'ezgif-frame-124.jpg',
-'ezgif-frame-125.jpg',
-'ezgif-frame-126.jpg',
-'ezgif-frame-127.jpg',
-'ezgif-frame-128.jpg',
-'ezgif-frame-129.jpg',
-'ezgif-frame-130.jpg',
-'ezgif-frame-131.jpg',
-'ezgif-frame-132.jpg',
-'ezgif-frame-133.jpg',
-'ezgif-frame-134.jpg',
-'ezgif-frame-135.jpg',
-'ezgif-frame-136.jpg',
-'ezgif-frame-137.jpg',
-'ezgif-frame-138.jpg',
-'ezgif-frame-139.jpg',
-'ezgif-frame-140.jpg',
-'ezgif-frame-141.jpg',
-'ezgif-frame-142.jpg',
-'ezgif-frame-143.jpg',
-'ezgif-frame-144.jpg',
-'ezgif-frame-145.jpg',
-'ezgif-frame-146.jpg',
-'ezgif-frame-147.jpg',
-'ezgif-frame-148.jpg',
-'ezgif-frame-149.jpg',
-'ezgif-frame-150.jpg',
-'ezgif-frame-151.jpg',
-'ezgif-frame-152.jpg',
-'ezgif-frame-153.jpg',
-'ezgif-frame-154.jpg',
-'ezgif-frame-155.jpg',
-'ezgif-frame-156.jpg',
-'ezgif-frame-157.jpg',
-'ezgif-frame-158.jpg',
-'ezgif-frame-159.jpg',
-'ezgif-frame-160.jpg',
-'ezgif-frame-161.jpg',
-'ezgif-frame-162.jpg',
-'ezgif-frame-163.jpg',
-'ezgif-frame-164.jpg'
-                // Add more image URLs as needed
-            ];
-
-            images.forEach((image) => {
-                $("#flipbook").turn("addPage", `<img src="${image}" alt="">`);
-            });
-        });
-
-        function startFlipBook() {
-            document.getElementById('flipbook').style.display = 'block';
-            document.getElementById('startButton').style.display = 'none';
-        }
-    </script>
+        </script>
+    </div>
 </body>
-
 </html>
